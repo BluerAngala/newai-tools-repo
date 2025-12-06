@@ -3,34 +3,18 @@
   "updatedAt": "2025-12-06",
   "tools": [
     {
-      "key": "timestamp",
-      "name": "时间戳转换",
-      "icon": "⏰",
-      "category": "encode",
-      "description": "时间戳与日期互转",
-      "version": "1.0.0",
-      "files": ["index.html", "index.js", "index.css"],
-      "size": 5120
-    },
-    {
-      "key": "json-format",
-      "name": "JSON格式化",
-      "icon": "📋",
-      "category": "dev",
-      "description": "JSON 美化、压缩、校验",
-      "version": "1.0.0",
-      "files": ["index.html", "index.js", "index.css"],
-      "size": 8192
-    },
-    {
       "key": "base64",
       "name": "Base64编解码",
       "icon": "🔐",
       "category": "encode",
       "description": "Base64 编码解码工具",
       "version": "1.0.0",
-      "files": ["index.html", "index.js", "index.css"],
-      "size": 3072
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ],
+      "size": 4414
     },
     {
       "key": "color-picker",
@@ -39,8 +23,26 @@
       "category": "image",
       "description": "屏幕取色、颜色转换",
       "version": "1.0.0",
-      "files": ["index.html", "index.js", "index.css"],
-      "size": 6144
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ],
+      "size": 6585
+    },
+    {
+      "key": "json-format",
+      "name": "JSON格式化",
+      "icon": "📋",
+      "category": "dev",
+      "description": "JSON 美化、压缩、校验",
+      "version": "1.0.0",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ],
+      "size": 5265
     },
     {
       "key": "qrcode",
@@ -49,8 +51,12 @@
       "category": "image",
       "description": "生成和识别二维码",
       "version": "1.0.0",
-      "files": ["index.html", "index.js", "index.css"],
-      "size": 15360
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ],
+      "size": 6556
     },
     {
       "key": "regex",
@@ -59,8 +65,26 @@
       "category": "dev",
       "description": "正则表达式测试工具",
       "version": "1.0.0",
-      "files": ["index.html", "index.js", "index.css"],
-      "size": 4096
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ],
+      "size": 8135
+    },
+    {
+      "key": "timestamp",
+      "name": "时间戳转换",
+      "icon": "⏰",
+      "category": "encode",
+      "description": "时间戳与日期互转",
+      "version": "1.0.0",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ],
+      "size": 4793
     }
   ]
 }

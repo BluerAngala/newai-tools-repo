@@ -1,0 +1,14 @@
+#!/bin/sh
+# Git pre-push hook: 推送前自动更新 tools-manifest.json
+
+echo "🔄 更新工具清单..."
+node scripts/update-manifest.js
+
+# 检查是否有变更
+if ! git diff --quiet tools-manifest.json; then
+  echo "📝 检测到清单变更，自动提交..."
+  git add tools-manifest.json
+  git commit -m "chore: 自动更新 tools-manifest.json"
+fi
+
+exit 0
