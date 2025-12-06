@@ -1,0 +1,8 @@
+{
+  "key": "json-format",
+  "name": "JSON格式化",
+  "icon": "📋",
+  "category": "dev",
+  "description": "JSON 美化、压缩、校验",
+  "version": "1.0.0"
+}

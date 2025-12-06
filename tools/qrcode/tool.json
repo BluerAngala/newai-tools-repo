@@ -1,0 +1,8 @@
+{
+  "key": "qrcode",
+  "name": "二维码工具",
+  "icon": "📱",
+  "category": "image",
+  "description": "生成和识别二维码",
+  "version": "1.0.0"
+}

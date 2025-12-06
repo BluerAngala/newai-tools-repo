@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>颜色选择器</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 颜色选择器</h1>
+    
+    <div class="card">
+      <h2>选择颜色</h2>
+      <div class="picker-row">
+        <input type="color" id="colorPicker" value="#4f46e5">
+        <div id="colorPreview" class="color-preview"></div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>颜色值</h2>
+      <div class="color-values">
+        <div class="value-row">
+          <label>HEX</label>
+          <input type="text" id="hexValue" readonly>
+          <button onclick="copyValue('hexValue')">复制</button>
+        </div>
+        <div class="value-row">
+          <label>RGB</label>
+          <input type="text" id="rgbValue" readonly>
+          <button onclick="copyValue('rgbValue')">复制</button>
+        </div>
+        <div class="value-row">
+          <label>HSL</label>
+          <input type="text" id="hslValue" readonly>
+          <button onclick="copyValue('hslValue')">复制</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>输入颜色值</h2>
+      <div class="input-row">
+        <input type="text" id="colorInput" placeholder="输入 HEX、RGB 或 HSL 值">
+        <button onclick="parseColor()">解析</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="index.js"></script>
+</body>
+</html>

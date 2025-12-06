@@ -1,0 +1,8 @@
+{
+  "key": "base64",
+  "name": "Base64编解码",
+  "icon": "🔐",
+  "category": "encode",
+  "description": "Base64 编码解码工具",
+  "version": "1.0.0"
+}

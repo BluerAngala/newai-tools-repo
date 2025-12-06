@@ -1,0 +1,8 @@
+{
+  "key": "color-picker",
+  "name": "颜色选择器",
+  "icon": "🎨",
+  "category": "image",
+  "description": "屏幕取色、颜色转换",
+  "version": "1.0.0"
+}

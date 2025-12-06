@@ -11,6 +11,56 @@
       "version": "1.0.0",
       "files": ["index.html", "index.js", "index.css"],
       "size": 5120
+    },
+    {
+      "key": "json-format",
+      "name": "JSON格式化",
+      "icon": "📋",
+      "category": "dev",
+      "description": "JSON 美化、压缩、校验",
+      "version": "1.0.0",
+      "files": ["index.html", "index.js", "index.css"],
+      "size": 8192
+    },
+    {
+      "key": "base64",
+      "name": "Base64编解码",
+      "icon": "🔐",
+      "category": "encode",
+      "description": "Base64 编码解码工具",
+      "version": "1.0.0",
+      "files": ["index.html", "index.js", "index.css"],
+      "size": 3072
+    },
+    {
+      "key": "color-picker",
+      "name": "颜色选择器",
+      "icon": "🎨",
+      "category": "image",
+      "description": "屏幕取色、颜色转换",
+      "version": "1.0.0",
+      "files": ["index.html", "index.js", "index.css"],
+      "size": 6144
+    },
+    {
+      "key": "qrcode",
+      "name": "二维码工具",
+      "icon": "📱",
+      "category": "image",
+      "description": "生成和识别二维码",
+      "version": "1.0.0",
+      "files": ["index.html", "index.js", "index.css"],
+      "size": 15360
+    },
+    {
+      "key": "regex",
+      "name": "正则表达式",
+      "icon": "🔍",
+      "category": "dev",
+      "description": "正则表达式测试工具",
+      "version": "1.0.0",
+      "files": ["index.html", "index.js", "index.css"],
+      "size": 4096
     }
   ]
 }
