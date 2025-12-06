@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2025-12-06",
+  "tools": [
+    {
+      "key": "timestamp",
+      "name": "时间戳转换",
+      "icon": "⏰",
+      "category": "encode",
+      "description": "时间戳与日期互转",
+      "version": "1.0.0",
+      "files": ["index.html", "index.js", "index.css"],
+      "size": 5120
+    }
+  ]
+}

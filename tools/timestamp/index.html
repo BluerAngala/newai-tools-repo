@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>时间戳转换</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <h1>⏰ 时间戳转换</h1>
+    
+    <!-- 当前时间 -->
+    <div class="card">
+      <h2>当前时间</h2>
+      <div class="current-time">
+        <span id="currentTimestamp">-</span>
+        <span id="currentDate">-</span>
+      </div>
+    </div>
+    
+    <!-- 时间戳转日期 -->
+    <div class="card">
+      <h2>时间戳 → 日期</h2>
+      <div class="input-group">
+        <input type="text" id="timestampInput" placeholder="输入时间戳（秒或毫秒）">
+        <button onclick="timestampToDate()">转换</button>
+      </div>
+      <div class="result" id="dateResult"></div>
+    </div>
+    
+    <!-- 日期转时间戳 -->
+    <div class="card">
+      <h2>日期 → 时间戳</h2>
+      <div class="input-group">
+        <input type="datetime-local" id="dateInput">
+        <button onclick="dateToTimestamp()">转换</button>
+      </div>
+      <div class="result" id="timestampResult"></div>
+    </div>
+  </div>
+  
+  <script src="index.js"></script>
+</body>
+</html>
