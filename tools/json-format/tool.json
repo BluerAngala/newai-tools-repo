@@ -4,5 +4,6 @@
   "icon": "📋",
   "category": "dev",
   "description": "JSON 美化、压缩、校验",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "author": "NewAI"
 }

@@ -4,5 +4,6 @@
   "icon": "🔍",
   "category": "dev",
   "description": "正则表达式测试工具",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "author": "NewAI"
 }

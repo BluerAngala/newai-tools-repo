@@ -9,12 +9,14 @@
       "category": "encode",
       "description": "Base64 编码解码工具",
       "version": "1.0.0",
+      "author": "NewAI",
+      "updatedAt": "2025-12-06",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 4414
+      "size": 4436
     },
     {
       "key": "color-picker",
@@ -23,12 +25,14 @@
       "category": "image",
       "description": "屏幕取色、颜色转换",
       "version": "1.0.0",
+      "author": "NewAI",
+      "updatedAt": "2025-12-06",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 6585
+      "size": 6607
     },
     {
       "key": "json-format",
@@ -37,12 +41,14 @@
       "category": "dev",
       "description": "JSON 美化、压缩、校验",
       "version": "1.0.0",
+      "author": "NewAI",
+      "updatedAt": "2025-12-06",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 5265
+      "size": 5287
     },
     {
       "key": "qrcode",
@@ -51,12 +57,14 @@
       "category": "image",
       "description": "生成和识别二维码",
       "version": "1.0.0",
+      "author": "NewAI",
+      "updatedAt": "2025-12-06",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 6556
+      "size": 6578
     },
     {
       "key": "regex",
@@ -65,12 +73,14 @@
       "category": "dev",
       "description": "正则表达式测试工具",
       "version": "1.0.0",
+      "author": "NewAI",
+      "updatedAt": "2025-12-06",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 8135
+      "size": 8157
     },
     {
       "key": "timestamp",
@@ -79,12 +89,14 @@
       "category": "encode",
       "description": "时间戳与日期互转",
       "version": "1.0.0",
+      "author": "NewAI",
+      "updatedAt": "2025-12-06",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 4793
+      "size": 4815
     }
   ]
 }

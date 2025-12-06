@@ -4,5 +4,6 @@
   "icon": "🎨",
   "category": "image",
   "description": "屏幕取色、颜色转换",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "author": "NewAI"
 }

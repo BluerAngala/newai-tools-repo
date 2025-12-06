@@ -4,5 +4,6 @@
   "icon": "⏰",
   "category": "encode",
   "description": "时间戳与日期互转",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "author": "NewAI"
 }

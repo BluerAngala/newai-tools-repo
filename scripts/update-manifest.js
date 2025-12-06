@@ -62,6 +62,8 @@ function updateManifest() {
         category: toolConfig.category,
         description: toolConfig.description,
         version: toolConfig.version || '1.0.0',
+        author: toolConfig.author || 'NewAI',
+        updatedAt: new Date().toISOString().split('T')[0],
         files,
         size
       });

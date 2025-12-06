@@ -4,5 +4,6 @@
   "icon": "🔐",
   "category": "encode",
   "description": "Base64 编码解码工具",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "author": "NewAI"
 }

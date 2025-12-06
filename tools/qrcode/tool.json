@@ -4,5 +4,6 @@
   "icon": "📱",
   "category": "image",
   "description": "生成和识别二维码",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "author": "NewAI"
 }
