@@ -9,11 +9,9 @@
       "category": "encode",
       "description": "Base64 编码解码工具",
       "version": "1.0.0",
-      "files": [
-        "index.css",
-        "index.html",
-        "index.js"
-      ],
+      "author": "NewAI Tools",
+      "updatedAt": "2025-12-06",
+      "files": ["index.css", "index.html", "index.js"],
       "size": 4414
     },
     {
@@ -23,11 +21,9 @@
       "category": "image",
       "description": "屏幕取色、颜色转换",
       "version": "1.0.0",
-      "files": [
-        "index.css",
-        "index.html",
-        "index.js"
-      ],
+      "author": "NewAI Tools",
+      "updatedAt": "2025-12-06",
+      "files": ["index.css", "index.html", "index.js"],
       "size": 6585
     },
     {
@@ -37,11 +33,9 @@
       "category": "dev",
       "description": "JSON 美化、压缩、校验",
       "version": "1.0.0",
-      "files": [
-        "index.css",
-        "index.html",
-        "index.js"
-      ],
+      "author": "NewAI Tools",
+      "updatedAt": "2025-12-06",
+      "files": ["index.css", "index.html", "index.js"],
       "size": 5265
     },
     {
@@ -51,11 +45,9 @@
       "category": "image",
       "description": "生成和识别二维码",
       "version": "1.0.0",
-      "files": [
-        "index.css",
-        "index.html",
-        "index.js"
-      ],
+      "author": "NewAI Tools",
+      "updatedAt": "2025-12-06",
+      "files": ["index.css", "index.html", "index.js"],
       "size": 6556
     },
     {
@@ -65,11 +57,9 @@
       "category": "dev",
       "description": "正则表达式测试工具",
       "version": "1.0.0",
-      "files": [
-        "index.css",
-        "index.html",
-        "index.js"
-      ],
+      "author": "NewAI Tools",
+      "updatedAt": "2025-12-06",
+      "files": ["index.css", "index.html", "index.js"],
       "size": 8135
     },
     {
@@ -79,11 +69,9 @@
       "category": "encode",
       "description": "时间戳与日期互转",
       "version": "1.0.0",
-      "files": [
-        "index.css",
-        "index.html",
-        "index.js"
-      ],
+      "author": "NewAI Tools",
+      "updatedAt": "2025-12-06",
+      "files": ["index.css", "index.html", "index.js"],
       "size": 4793
     }
   ]
