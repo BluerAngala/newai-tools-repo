@@ -246,7 +246,58 @@ async function publishToWechat(data) {
     }
   }, '*');
 
-  alert('已请求打开微信公众号后台，请确保已登录。\n\n登录后，扩展将自动执行发布操作。');
+  // 显示非阻塞提示
+  showToast('正在打开微信公众号后台，请确保已登录...');
+}
+
+// 显示非阻塞提示
+function showToast(message, duration = 3000) {
+  // 移除已有的 toast
+  const existing = document.getElementById('toast-notification');
+  if (existing) existing.remove();
+
+  const toast = document.createElement('div');
+  toast.id = 'toast-notification';
+  toast.textContent = message;
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: toast-in 0.3s ease;
+  `;
+
+  // 添加动画样式
+  if (!document.getElementById('toast-style')) {
+    const style = document.createElement('style');
+    style.id = 'toast-style';
+    style.textContent = `
+      @keyframes toast-in {
+        from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
+      }
+      @keyframes toast-out {
+        from { opacity: 1; transform: translateX(-50%) translateY(0); }
+        to { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  document.body.appendChild(toast);
+
+  // 自动消失
+  setTimeout(() => {
+    toast.style.animation = 'toast-out 0.3s ease forwards';
+    setTimeout(() => toast.remove(), 300);
+  }, duration);
 }
 
 // 微信配置弹窗
