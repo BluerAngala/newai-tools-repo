@@ -3,116 +3,116 @@
   "updatedAt": "2025-12-07",
   "tools": [
     {
-      "key": "media-publisher",
-      "name": "自媒体助手",
-      "icon": "📢",
-      "category": "productivity",
-      "description": "自媒体内容一键分发到多平台，支持动态、文章、视频三种内容类型",
-      "version": "2.1.0",
-      "author": "NewAI",
-      "updatedAt": "2025-12-07",
-      "files": [
-        "index.html",
-        "index.css",
-        "index.js"
-      ],
-      "size": 15000
-    },
-    {
       "key": "base64",
       "name": "Base64编解码",
       "icon": "🔐",
       "category": "encode",
-      "description": "Base64 编码解码工具",
+      "description": "Base64 编码解码工具，支持文本与Base64互转",
       "version": "1.0.0",
       "author": "NewAI",
-      "updatedAt": "2025-12-06",
+      "updatedAt": "2025-12-07",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 4436
+      "size": 4691
     },
     {
       "key": "color-picker",
       "name": "颜色选择器",
       "icon": "🎨",
       "category": "image",
-      "description": "屏幕取色、颜色转换",
+      "description": "屏幕取色、颜色格式转换工具",
       "version": "1.0.0",
       "author": "NewAI",
-      "updatedAt": "2025-12-06",
+      "updatedAt": "2025-12-07",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 6607
+      "size": 6832
     },
     {
       "key": "json-format",
       "name": "JSON格式化",
       "icon": "📋",
       "category": "dev",
-      "description": "JSON 美化、压缩、校验",
+      "description": "JSON 美化、压缩、校验工具",
       "version": "1.0.0",
       "author": "NewAI",
-      "updatedAt": "2025-12-06",
+      "updatedAt": "2025-12-07",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 5287
+      "size": 5504
+    },
+    {
+      "key": "media-publisher",
+      "name": "自媒体助手",
+      "icon": "📢",
+      "category": "productivity",
+      "description": "自媒体内容一键分发到多平台，支持动态、文章、视频",
+      "version": "2.1.0",
+      "author": "NewAI",
+      "updatedAt": "2025-12-07",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ],
+      "size": 25989
     },
     {
       "key": "qrcode",
       "name": "二维码工具",
       "icon": "📱",
       "category": "image",
-      "description": "生成和识别二维码",
+      "description": "二维码生成和识别工具",
       "version": "1.0.0",
       "author": "NewAI",
-      "updatedAt": "2025-12-06",
+      "updatedAt": "2025-12-07",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 6578
+      "size": 6809
     },
     {
       "key": "regex",
       "name": "正则表达式",
       "icon": "🔍",
       "category": "dev",
-      "description": "正则表达式测试工具",
+      "description": "正则表达式在线测试工具",
       "version": "1.0.0",
       "author": "NewAI",
-      "updatedAt": "2025-12-06",
+      "updatedAt": "2025-12-07",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 8157
+      "size": 8379
     },
     {
       "key": "timestamp",
       "name": "时间戳转换",
       "icon": "⏰",
       "category": "encode",
-      "description": "时间戳与日期互转",
+      "description": "时间戳与日期互转，支持秒级和毫秒级",
       "version": "1.0.0",
       "author": "NewAI",
-      "updatedAt": "2025-12-06",
+      "updatedAt": "2025-12-07",
       "files": [
         "index.css",
         "index.html",
         "index.js"
       ],
-      "size": 4815
+      "size": 5075
     }
   ]
 }
