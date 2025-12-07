@@ -3,7 +3,15 @@
   "name": "Base64编解码",
   "icon": "🔐",
   "category": "encode",
-  "description": "Base64 编码解码工具",
+  "description": "Base64 编码解码工具，支持文本与Base64互转",
   "version": "1.0.0",
-  "author": "NewAI"
+  "author": "NewAI",
+  "updatedAt": "2025-12-06",
+  "tags": ["Base64", "编码", "解码", "文本转换"],
+  "features": [
+    "文本转Base64编码",
+    "Base64解码为文本",
+    "支持中文字符",
+    "一键复制结果"
+  ]
 }

@@ -3,7 +3,15 @@
   "name": "JSON格式化",
   "icon": "📋",
   "category": "dev",
-  "description": "JSON 美化、压缩、校验",
+  "description": "JSON 美化、压缩、校验工具",
   "version": "1.0.0",
-  "author": "NewAI"
+  "author": "NewAI",
+  "updatedAt": "2025-12-06",
+  "tags": ["JSON", "格式化", "美化", "压缩", "校验"],
+  "features": [
+    "JSON格式化美化",
+    "JSON压缩",
+    "语法校验",
+    "错误提示定位"
+  ]
 }

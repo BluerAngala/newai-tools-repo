@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自媒体助手</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <div class="main-content">
+      <!-- 左侧编辑区 -->
+      <div class="editor-panel">
+        <!-- 标签页 -->
+        <div class="tabs">
+          <button class="tab active" data-tab="post" onclick="switchTab('post')">动态</button>
+          <button class="tab" data-tab="article" onclick="switchTab('article')">文章</button>
+          <button class="tab" data-tab="video" onclick="switchTab('video')">视频</button>
+        </div>
+
+        <!-- 动态表单 -->
+        <div id="postForm" class="form-section">
+          <div class="form-group">
+            <label>标题</label>
+            <input type="text" id="postTitle" placeholder="请输入标题">
+          </div>
+          <div class="form-group">
+            <label>内容</label>
+            <textarea id="postContent" placeholder="请输入内容" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label>图片</label>
+            <div class="btn-group">
+              <button class="btn btn-outline" onclick="uploadImage('post')">📷 上传图片</button>
+              <button class="btn btn-outline" onclick="pasteImage('post')">📋 粘贴图片</button>
+            </div>
+            <div id="postImages" class="image-preview"></div>
+          </div>
+          <div class="form-group">
+            <label>标签</label>
+            <div class="tag-input-wrapper">
+              <div id="postTags" class="tags-container"></div>
+              <input type="text" id="postTagInput" placeholder="输入后回车添加" onkeydown="handleTagInput(event, 'post')">
+            </div>
+          </div>
+        </div>
+
+        <!-- 文章表单 -->
+        <div id="articleForm" class="form-section hidden">
+          <div class="form-group">
+            <label>标题</label>
+            <input type="text" id="articleTitle" placeholder="请输入文章标题">
+          </div>
+          <div class="form-group">
+            <label>封面图</label>
+            <div class="upload-area" onclick="uploadCover('article')">
+              <div id="articleCoverPlaceholder" class="upload-placeholder">
+                <span class="upload-icon">🖼️</span>
+                <span>点击上传封面图</span>
+              </div>
+              <img id="articleCoverPreview" class="cover-preview hidden">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>文章内容（支持HTML）</label>
+            <textarea id="articleContent" placeholder="请输入文章内容" rows="8" class="code-textarea"></textarea>
+          </div>
+          <div class="form-group">
+            <label>标签</label>
+            <div class="tag-input-wrapper">
+              <div id="articleTags" class="tags-container"></div>
+              <input type="text" id="articleTagInput" placeholder="输入后回车添加" onkeydown="handleTagInput(event, 'article')">
+            </div>
+          </div>
+        </div>
+
+        <!-- 视频表单 -->
+        <div id="videoForm" class="form-section hidden">
+          <div class="form-group">
+            <label>标题</label>
+            <input type="text" id="videoTitle" placeholder="请输入视频标题">
+          </div>
+          <div class="form-group">
+            <label>视频文件</label>
+            <div class="upload-area" onclick="uploadVideo()">
+              <div id="videoPlaceholder" class="upload-placeholder">
+                <span class="upload-icon">🎬</span>
+                <span>点击上传视频</span>
+              </div>
+              <video id="videoPreview" class="video-preview hidden" controls></video>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>封面图</label>
+            <div class="upload-area" onclick="uploadCover('video')">
+              <div id="videoCoverPlaceholder" class="upload-placeholder">
+                <span class="upload-icon">🖼️</span>
+                <span>点击上传封面图</span>
+              </div>
+              <img id="videoCoverPreview" class="cover-preview hidden">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>标签</label>
+            <div class="tag-input-wrapper">
+              <div id="videoTags" class="tags-container"></div>
+              <input type="text" id="videoTagInput" placeholder="输入后回车添加" onkeydown="handleTagInput(event, 'video')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧平台配置区 -->
+      <div class="platform-panel">
+        <div class="panel-section">
+          <label class="switch-label">
+            <span>自动发布</span>
+            <input type="checkbox" id="autoPublish">
+            <span class="switch"></span>
+          </label>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="panel-section">
+          <div class="section-header">
+            <span>🇨🇳 中国平台</span>
+            <span class="count" id="cnCount">0/1</span>
+          </div>
+          <div class="platform-item">
+            <label class="platform-checkbox">
+              <input type="checkbox" name="platform" value="wechat">
+              <span>💬 微信公众号</span>
+            </label>
+            <button class="btn-icon" onclick="openWechatConfig()" title="配置">⚙️</button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <button class="btn btn-primary btn-block" onclick="publishContent()">
+          ✈️ 发布内容
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 微信公众号配置弹窗 -->
+  <div id="wechatConfigModal" class="modal hidden">
+    <div class="modal-backdrop" onclick="closeWechatConfig()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>💬 微信公众号配置</h3>
+        <button class="btn-close" onclick="closeWechatConfig()">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- 原创设置 -->
+        <div class="config-section">
+          <div class="config-title">📝 原创设置</div>
+          <label class="config-item">
+            <span>声明原创</span>
+            <input type="checkbox" id="wxIsOriginal" checked>
+          </label>
+          <div class="config-item">
+            <label>创作来源</label>
+            <select id="wxClaimSourceType">
+              <option value="1">原创</option>
+              <option value="4" selected>个人观点，仅供参考</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 功能开关 -->
+        <div class="config-section">
+          <div class="config-title">⚡ 功能开关</div>
+          <label class="config-item">
+            <span>开启赞赏</span>
+            <input type="checkbox" id="wxEnableReward" checked>
+          </label>
+          <label class="config-item">
+            <span>开启广告</span>
+            <input type="checkbox" id="wxEnableAd" checked>
+          </label>
+          <label class="config-item">
+            <span>允许转载</span>
+            <input type="checkbox" id="wxAllowReprint">
+          </label>
+        </div>
+
+        <!-- 合集设置 -->
+        <div class="config-section">
+          <div class="config-title">📚 合集设置</div>
+          <input type="text" id="wxAlbumTitles" placeholder="输入合集名称，多个用逗号分隔">
+          <div class="config-hint">⚠️ 名称必须与公众号后台完全一致</div>
+        </div>
+
+        <!-- 付费设置 -->
+        <div class="config-section">
+          <div class="config-title">💰 付费设置</div>
+          <label class="config-item">
+            <span>开启付费阅读</span>
+            <input type="checkbox" id="wxPayEnabled">
+          </label>
+          <div class="config-row">
+            <div class="config-item">
+              <label>金额（元）</label>
+              <input type="number" id="wxPayFee" value="10" min="1">
+            </div>
+            <div class="config-item">
+              <label>预览比例</label>
+              <input type="number" id="wxPreviewPercent" value="91" min="0" max="100">
+            </div>
+          </div>
+          <div class="config-item">
+            <label>付费说明</label>
+            <input type="text" id="wxPayDescription" value="付费阅读全文">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeWechatConfig()">取消</button>
+        <button class="btn btn-primary" onclick="saveWechatConfig()">💾 保存配置</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

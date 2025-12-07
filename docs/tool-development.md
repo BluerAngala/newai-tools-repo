@@ -11,27 +11,61 @@ tools/{tool-key}/
 ├── tool.json      # 工具元信息（必需）
 ├── index.html     # 工具页面（必需）
 ├── index.js       # 工具逻辑（必需）
-└── index.css      # 工具样式（必需）
+└── index.css      # 工具样式（可选，使用 daisyUI 时不需要）
 ```
 
-## 二、tool.json 规范
+## 二、公共资源
+
+工具仓库提供了公共的 UI 框架资源，位于 `libs/` 目录：
+
+```
+libs/
+└── daisyui/
+    ├── daisyui.css           # daisyUI 5 核心样式
+    ├── themes.css            # daisyUI 5 主题样式
+    └── tailwindcss-browser.js # Tailwind CSS 4 浏览器版
+```
+
+### 推荐使用 daisyUI 5
+
+新工具推荐使用 daisyUI 5 + Tailwind CSS 4 进行开发，优势：
+
+- 现代化的 UI 组件
+- 丰富的主题支持
+- 响应式设计开箱即用
+- 无需编写自定义 CSS
+
+## 三、tool.json 规范
 
 ```json
 {
-  "key": "tool-key",           // 唯一标识，小写字母+连字符
-  "name": "工具名称",           // 中文名称
-  "icon": "🔧",                // Emoji 图标
-  "category": "dev",           // 分类
-  "description": "工具描述",    // 一句话描述
-  "version": "1.0.0"           // 语义化版本
+  "key": "tool-key",
+  "name": "工具名称",
+  "icon": "🔧",
+  "category": "dev",
+  "description": "工具描述",
+  "version": "1.0.0",
+  "author": "NewAI",
+  "updatedAt": "2025-12-07",
+  "tags": ["标签1", "标签2"],
+  "features": ["功能特性1", "功能特性2"]
 }
 ```
 
-### key 命名规则
+### 字段说明
 
-- 使用小写字母和连字符
-- 简洁明了，如 `json-formatter`、`base64-encoder`
-- 不使用下划线或驼峰
+| 字段        | 必需 | 说明                      |
+| ----------- | ---- | ------------------------- |
+| key         | ✅   | 唯一标识，小写字母+连字符 |
+| name        | ✅   | 中文名称                  |
+| icon        | ✅   | Emoji 图标                |
+| category    | ✅   | 分类                      |
+| description | ✅   | 一句话描述                |
+| version     | ✅   | 语义化版本                |
+| author      | ✅   | 作者                      |
+| updatedAt   | ✅   | 更新日期 YYYY-MM-DD       |
+| tags        | ⬚    | 标签数组                  |
+| features    | ⬚    | 功能特性数组              |
 
 ### category 可选值
 
@@ -42,220 +76,202 @@ tools/{tool-key}/
 - `productivity` - 效率工具
 - `other` - 其他
 
-## 三、index.html 模板
+## 四、index.html 模板（daisyUI 5 版）
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>工具名称</title>
-  <link rel="stylesheet" href="index.css">
-</head>
-<body>
-  <div class="container">
-    <h1>🔧 工具名称</h1>
-    
-    <!-- 功能卡片 -->
-    <div class="card">
-      <h2>功能标题</h2>
-      <div class="input-group">
-        <input type="text" id="input" placeholder="请输入...">
-        <button class="btn" onclick="process()">处理</button>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>工具名称</title>
+    <!-- daisyUI 5 + Tailwind CSS 4 本地资源 -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body class="bg-base-200 min-h-screen">
+    <div class="container mx-auto p-4 max-w-2xl">
+      <!-- 标题 -->
+      <h1 class="text-2xl font-bold text-center mb-6">🔧 工具名称</h1>
+
+      <!-- 功能卡片 -->
+      <div class="card bg-base-100 shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title text-sm text-base-content/70">功能标题</h2>
+
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">输入</legend>
+            <input
+              type="text"
+              id="input"
+              placeholder="请输入..."
+              class="input w-full"
+            />
+          </fieldset>
+
+          <div class="flex gap-2 mt-4">
+            <button class="btn btn-primary" onclick="process()">处理</button>
+            <button class="btn btn-ghost" onclick="clearInput()">清空</button>
+          </div>
+
+          <div
+            id="result"
+            class="mt-4 p-3 bg-base-200 rounded-lg font-mono text-sm whitespace-pre-wrap hidden"
+          ></div>
+        </div>
       </div>
-      <div class="result" id="result"></div>
     </div>
-  </div>
-  
-  <script src="index.js"></script>
-</body>
+
+    <script src="index.js"></script>
+  </body>
 </html>
 ```
 
 ### HTML 规范
 
-1. 声明 `lang="zh-CN"`
+1. 声明 `lang="zh-CN"` 和 `data-theme="light"`
 2. 包含 viewport meta 标签
-3. 使用 `.container` 作为根容器
-4. 使用 `.card` 包裹功能模块
+3. 引用本地 daisyUI 资源（相对路径 `../../libs/daisyui/`）
+4. 使用 daisyUI 组件类名
 5. 标题包含 emoji 图标
 
-## 四、index.css 模板
+## 五、常用 daisyUI 组件
 
-```css
-/* 基础重置 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+### 按钮
 
-/* 页面 */
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #f5f5f5;
-  min-height: 100vh;
-  padding: 20px;
-}
-
-/* 容器 */
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* 标题 */
-h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 24px;
-}
-
-/* 卡片 */
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.card h2 {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 12px;
-}
-
-/* 输入组 */
-.input-group {
-  display: flex;
-  gap: 8px;
-}
-
-.input-group input,
-.input-group textarea,
-.input-group select {
-  flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.input-group textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
-/* 按钮 */
-.btn {
-  padding: 10px 20px;
-  background: #4f46e5;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  white-space: nowrap;
-}
-
-.btn:hover {
-  background: #4338ca;
-}
-
-.btn-secondary {
-  background: #6b7280;
-}
-
-.btn-secondary:hover {
-  background: #4b5563;
-}
-
-.btn-sm {
-  padding: 6px 12px;
-  font-size: 12px;
-}
-
-/* 结果 */
-.result {
-  margin-top: 12px;
-  padding: 12px;
-  background: #f0f9ff;
-  border-radius: 6px;
-  font-family: monospace;
-  word-break: break-all;
-  white-space: pre-wrap;
-}
-
-.result:empty {
-  display: none;
-}
-
-.error {
-  color: #dc2626;
-  background: #fef2f2;
-}
-
-.success {
-  color: #16a34a;
-  background: #f0fdf4;
-}
-
-/* 工具栏 */
-.toolbar {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-}
+```html
+<button class="btn btn-primary">主要按钮</button>
+<button class="btn btn-secondary">次要按钮</button>
+<button class="btn btn-ghost">幽灵按钮</button>
+<button class="btn btn-outline">边框按钮</button>
+<button class="btn btn-sm">小按钮</button>
+<button class="btn btn-lg">大按钮</button>
 ```
 
-### CSS 规范
+### 输入框
 
-- 主色调：`#4f46e5`（Indigo）
-- 圆角：6px（小）、12px（大）
-- 间距：8px 的倍数
-- 字体：系统字体栈
-- 代码展示：`monospace`
+```html
+<input type="text" class="input w-full" placeholder="文本输入" />
+<textarea class="textarea w-full h-32" placeholder="多行文本"></textarea>
+<select class="select w-full">
+  <option>选项1</option>
+</select>
+```
 
-## 五、index.js 模板
+### 表单字段
+
+```html
+<fieldset class="fieldset">
+  <legend class="fieldset-legend">字段标题</legend>
+  <input type="text" class="input w-full" />
+  <p class="label text-xs">提示信息</p>
+</fieldset>
+```
+
+### 卡片
+
+```html
+<div class="card bg-base-100 shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">标题</h2>
+    <p>内容</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">操作</button>
+    </div>
+  </div>
+</div>
+```
+
+### 标签页
+
+```html
+<div role="tablist" class="tabs tabs-box">
+  <button role="tab" class="tab tab-active">标签1</button>
+  <button role="tab" class="tab">标签2</button>
+</div>
+```
+
+### 徽章
+
+```html
+<span class="badge badge-primary">标签</span>
+<span class="badge badge-outline">边框标签</span>
+```
+
+### 开关
+
+```html
+<label class="flex items-center gap-2 cursor-pointer">
+  <span class="label">开关</span>
+  <input type="checkbox" class="toggle toggle-primary" />
+</label>
+```
+
+### 弹窗
+
+```html
+<button onclick="my_modal.showModal()">打开弹窗</button>
+<dialog id="my_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">标题</h3>
+    <p class="py-4">内容</p>
+    <div class="modal-action">
+      <button class="btn" onclick="my_modal.close()">关闭</button>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop"><button>close</button></form>
+</dialog>
+```
+
+## 六、index.js 模板
 
 ```javascript
-// 工具名称
+// 工具名称 - daisyUI 5 版本
 // 版本: 1.0.0
 
 /**
  * 处理函数
  */
 function process() {
-  const input = document.getElementById('input').value.trim();
-  const resultEl = document.getElementById('result');
-  
+  const input = document.getElementById("input").value.trim();
+
   // 输入验证
   if (!input) {
-    showResult('result', '请输入内容', true);
+    showResult("请输入内容", true);
     return;
   }
-  
+
   try {
     // 处理逻辑
     const output = doSomething(input);
-    showResult('result', output);
+    showResult(output);
   } catch (err) {
-    showResult('result', '处理失败: ' + err.message, true);
+    showResult("处理失败: " + err.message, true);
   }
 }
 
 /**
  * 显示结果
- * @param {string} id - 元素 ID
  * @param {string} content - 内容
  * @param {boolean} isError - 是否错误
  */
-function showResult(id, content, isError = false) {
-  const el = document.getElementById(id);
+function showResult(content, isError = false) {
+  const el = document.getElementById("result");
   el.textContent = content;
-  el.className = 'result' + (isError ? ' error' : '');
+  el.classList.remove("hidden", "text-error", "bg-error/10");
+  if (isError) {
+    el.classList.add("text-error", "bg-error/10");
+  }
 }
 
 /**
@@ -265,9 +281,9 @@ function showResult(id, content, isError = false) {
 async function copyText(text) {
   try {
     await navigator.clipboard.writeText(text);
-    // 可选：显示提示
+    // 可选：显示 toast 提示
   } catch (err) {
-    console.error('复制失败:', err);
+    console.error("复制失败:", err);
   }
 }
 
@@ -275,102 +291,131 @@ async function copyText(text) {
  * 清空输入
  */
 function clearInput() {
-  document.getElementById('input').value = '';
-  document.getElementById('result').textContent = '';
+  document.getElementById("input").value = "";
+  document.getElementById("result").classList.add("hidden");
 }
 
-// 初始化（可选）
-document.addEventListener('DOMContentLoaded', () => {
+// 初始化
+document.addEventListener("DOMContentLoaded", () => {
   // 初始化逻辑
 });
 ```
 
-### JS 规范
+## 七、常用布局模板
 
-1. 文件开头注释工具名称和版本
-2. 函数添加 JSDoc 注释
-3. 使用 `const`/`let`，禁止 `var`
-4. 错误处理使用 try-catch
-5. 异步操作使用 async/await
-
-## 六、常用布局模板
-
-### 输入-输出型
-
-适用于：格式化、转换、计算
+### 输入-输出型（daisyUI 版）
 
 ```html
-<div class="card">
-  <h2>输入</h2>
-  <textarea id="input" rows="4" placeholder="请输入..."></textarea>
-</div>
-
-<div class="card">
-  <div class="toolbar">
-    <button class="btn" onclick="process()">处理</button>
-    <button class="btn btn-secondary" onclick="clearInput()">清空</button>
+<div class="card bg-base-100 shadow-sm mb-4">
+  <div class="card-body">
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">输入</legend>
+      <textarea
+        id="input"
+        class="textarea w-full h-32"
+        placeholder="请输入..."
+      ></textarea>
+    </fieldset>
   </div>
 </div>
 
-<div class="card">
-  <h2>输出</h2>
-  <div class="result" id="result"></div>
-  <div class="toolbar">
-    <button class="btn btn-sm" onclick="copyResult()">复制</button>
+<div class="flex gap-2 justify-center mb-4">
+  <button class="btn btn-primary" onclick="process()">处理</button>
+  <button class="btn btn-ghost" onclick="clearInput()">清空</button>
+</div>
+
+<div class="card bg-base-100 shadow-sm">
+  <div class="card-body">
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">输出</legend>
+      <div
+        id="result"
+        class="p-3 bg-base-200 rounded-lg font-mono text-sm min-h-20"
+      ></div>
+    </fieldset>
+    <div class="card-actions justify-end mt-2">
+      <button class="btn btn-sm btn-outline" onclick="copyResult()">
+        复制
+      </button>
+    </div>
   </div>
 </div>
 ```
 
-### 双向转换型
-
-适用于：编码/解码、加密/解密
+### 双向转换型（daisyUI 版）
 
 ```html
-<div class="card">
-  <h2>编码</h2>
-  <div class="input-group">
-    <input type="text" id="plainInput" placeholder="原文">
-    <button class="btn" onclick="encode()">编码 →</button>
+<div class="card bg-base-100 shadow-sm mb-4">
+  <div class="card-body">
+    <h2 class="card-title text-sm">编码</h2>
+    <div class="flex gap-2">
+      <input
+        type="text"
+        id="plainInput"
+        class="input flex-1"
+        placeholder="原文"
+      />
+      <button class="btn btn-primary" onclick="encode()">编码 →</button>
+    </div>
+    <div
+      id="encodeResult"
+      class="mt-2 p-3 bg-base-200 rounded-lg font-mono text-sm hidden"
+    ></div>
   </div>
-  <div class="result" id="encodeResult"></div>
 </div>
 
-<div class="card">
-  <h2>解码</h2>
-  <div class="input-group">
-    <input type="text" id="encodedInput" placeholder="编码后">
-    <button class="btn" onclick="decode()">← 解码</button>
+<div class="card bg-base-100 shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title text-sm">解码</h2>
+    <div class="flex gap-2">
+      <input
+        type="text"
+        id="encodedInput"
+        class="input flex-1"
+        placeholder="编码后"
+      />
+      <button class="btn btn-primary" onclick="decode()">← 解码</button>
+    </div>
+    <div
+      id="decodeResult"
+      class="mt-2 p-3 bg-base-200 rounded-lg font-mono text-sm hidden"
+    ></div>
   </div>
-  <div class="result" id="decodeResult"></div>
 </div>
 ```
 
-### 实时预览型
+## 八、主题支持
 
-适用于：颜色选择、正则测试
+daisyUI 5 支持多种主题，通过 `data-theme` 属性切换：
 
 ```html
-<div class="card">
-  <h2>输入</h2>
-  <input type="text" id="input" oninput="preview()">
-</div>
-
-<div class="card">
-  <h2>预览</h2>
-  <div id="preview"></div>
-</div>
+<html data-theme="light">
+  <!-- 亮色主题 -->
+  <html data-theme="dark">
+    <!-- 暗色主题 -->
+  </html>
+</html>
 ```
 
-## 七、更新清单
+### 主题切换按钮
+
+```html
+<label class="swap swap-rotate">
+  <input type="checkbox" class="theme-controller" value="dark" />
+  <span class="swap-on">🌙</span>
+  <span class="swap-off">☀️</span>
+</label>
+```
+
+## 九、更新清单
 
 完成工具开发后，更新 `tools-manifest.json`：
 
 ```json
 {
   "version": "1.0.0",
-  "updatedAt": "2025-12-06",
+  "updatedAt": "2025-12-07",
   "tools": [
-    // ... 现有工具
     {
       "key": "my-tool",
       "name": "我的工具",
@@ -378,8 +423,10 @@ document.addEventListener('DOMContentLoaded', () => {
       "category": "dev",
       "description": "工具描述",
       "version": "1.0.0",
-      "files": ["index.html", "index.js", "index.css"],
-      "size": 3000
+      "author": "NewAI",
+      "updatedAt": "2025-12-07",
+      "files": ["index.html", "index.js", "tool.json"],
+      "size": 5000
     }
   ]
 }
@@ -389,30 +436,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ```bash
 # 计算文件总大小（字节）
-wc -c tools/my-tool/index.* | tail -1
+wc -c tools/my-tool/index.* tools/my-tool/tool.json | tail -1
 ```
 
-## 八、开发检查清单
+## 十、开发检查清单
 
 - [ ] 创建 `tools/{key}/` 目录
-- [ ] 创建 `tool.json`
-- [ ] 创建 `index.html`
-- [ ] 创建 `index.css`
+- [ ] 创建 `tool.json`（包含 tags 和 features）
+- [ ] 创建 `index.html`（使用 daisyUI 5）
 - [ ] 创建 `index.js`
 - [ ] 更新 `tools-manifest.json`
 - [ ] 本地测试功能
 - [ ] 计算并填写 `size`
 
-## 九、注意事项
+## 十一、注意事项
 
-1. **无外部依赖** - 使用原生 JS，避免大型库
-2. **离线可用** - 资源本地化，不依赖 CDN
-3. **响应式** - 适配不同窗口大小
-4. **中文界面** - 界面文字使用中文
-5. **即时反馈** - 操作后立即显示结果
-6. **错误友好** - 清晰的错误提示
-7. **复制功能** - 结果提供复制按钮
+1. **使用本地资源** - 引用 `../../libs/daisyui/` 下的文件
+2. **响应式设计** - 使用 Tailwind 响应式类（sm:、lg:）
+3. **中文界面** - 界面文字使用中文
+4. **即时反馈** - 操作后立即显示结果
+5. **错误友好** - 使用 daisyUI 的 alert 或 toast 显示错误
+6. **复制功能** - 结果提供复制按钮
+7. **主题兼容** - 使用 daisyUI 语义化颜色（base-100、primary 等）
 
-## 十、示例工具
+## 十二、示例工具
 
-参考 [timestamp](../tools/timestamp/) 工具的完整实现。
+参考以下工具的完整实现：
+
+- [media-publisher](../tools/media-publisher/) - daisyUI 5 版本示例
+- [timestamp](../tools/timestamp/) - 传统 CSS 版本示例

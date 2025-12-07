@@ -1,7 +1,23 @@
 {
   "version": "1.0.0",
-  "updatedAt": "2025-12-06",
+  "updatedAt": "2025-12-07",
   "tools": [
+    {
+      "key": "media-publisher",
+      "name": "自媒体助手",
+      "icon": "📢",
+      "category": "productivity",
+      "description": "自媒体内容一键分发到多平台，支持动态、文章、视频三种内容类型",
+      "version": "2.1.0",
+      "author": "NewAI",
+      "updatedAt": "2025-12-07",
+      "files": [
+        "index.html",
+        "index.css",
+        "index.js"
+      ],
+      "size": 15000
+    },
     {
       "key": "base64",
       "name": "Base64编解码",
